@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Navigation2, Shield } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import AviraLogo from './AviraLogo';
 import './landing.css';
 
 export function CitizenLogin() {
@@ -18,7 +19,7 @@ export function CitizenLogin() {
       
       <div className="auth-box">
         <div className="auth-header">
-          <Navigation2 size={32} style={{ color: 'var(--l-accent)', margin: '0 auto 16px auto' }} />
+          <AviraLogo style={{ justifyContent: 'center', marginBottom: '16px' }} />
           <h2>Citizen Access</h2>
           <p>Login or register to report issues</p>
         </div>
@@ -57,7 +58,7 @@ export function AuthorityLogin() {
       
       <div className="auth-box" style={{ borderTop: '4px solid var(--l-primary)' }}>
         <div className="auth-header">
-          <Shield size={32} style={{ color: 'var(--l-primary)', margin: '0 auto 16px auto' }} />
+          <AviraLogo style={{ justifyContent: 'center', marginBottom: '16px' }} />
           <h2>Authority Portal</h2>
           <p>Official Government Access</p>
         </div>

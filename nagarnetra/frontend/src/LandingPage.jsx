@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Bus, MapPin, AlertTriangle, Activity, CheckCircle, Navigation2, FileWarning, ArrowRight, Video, FileText, Cpu, Map, ShieldAlert } from 'lucide-react';
+import AviraLogo from './AviraLogo';
 import './landing.css';
 
 export default function LandingPage() {
@@ -11,10 +12,7 @@ export default function LandingPage() {
       {/* Navigation */}
       <nav className="landing-nav">
         <div className="nav-brand">
-          <span className="brand-logo">
-            <Navigation2 className="brand-icon" />
-          </span>
-          <span className="brand-text">Nagar<b>Netra</b></span>
+          <AviraLogo />
         </div>
         <div className="nav-links">
           <a href="#problem">Overview</a>
@@ -30,41 +28,37 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="hero-section">
+        {/* Full-bleed animated background */}
+        <div className="hero-background">
+          <svg viewBox="0 0 1440 650" className="hero-bg-svg" preserveAspectRatio="xMidYMid slice">
+            <path d="M -100,200 C 300,50 600,450 1500,200" className="hero-road r1" />
+            <path d="M 200,-50 C 400,300 800,200 1200,700" className="hero-road r2" />
+            <path d="M -50,550 C 400,600 1000,300 1500,600" className="hero-road r3" />
+            <path d="M 600,-50 C 700,250 1100,400 1500,50" className="hero-road r4" />
+          </svg>
+          <div className="hero-elements">
+            <div className="hero-bus hb1"><Bus size={16} /></div>
+            <div className="hero-bus hb2"><Bus size={16} /></div>
+            <div className="hero-bus hb3"><Bus size={16} /></div>
+            <div className="hero-event he1"><AlertTriangle size={12} /></div>
+            <div className="hero-event he2"><Activity size={12} /></div>
+            <div className="hero-event he3"><CheckCircle size={12} /></div>
+          </div>
+        </div>
+
         <div className="hero-content">
           <div className="hero-label">MOBILE URBAN INTELLIGENCE</div>
           <h1 className="hero-title">Every bus can help<br />the city see.</h1>
           <p className="hero-subtitle">
-            NagarNetra transforms public transport fleets into mobile sensing units, helping authorities understand roads, traffic, infrastructure and incidents in near real time.
+            AVIRA transforms public transport fleets into mobile sensing units, helping authorities understand roads, traffic, infrastructure and incidents in near real time.
           </p>
           <div className="hero-ctas">
             <button className="btn-large btn-primary" onClick={() => navigate('/citizen-login')}>
-              Explore NagarNetra
+              Explore AVIRA
             </button>
             <button className="btn-large btn-outline" onClick={() => navigate('/authority-login')}>
               Access Portal
             </button>
-          </div>
-        </div>
-        <div className="hero-visual">
-          <div className="map-simulation">
-            {/* Minimal SVG path for road */}
-            <svg viewBox="0 0 400 400" className="map-svg">
-              <path d="M 50,350 C 100,200 200,300 350,50" className="road-path" />
-              <path d="M 50,50 C 150,150 250,100 350,350" className="road-path" />
-            </svg>
-            
-            {/* Moving Bus Marker */}
-            <div className="bus-marker">
-              <Bus size={20} />
-            </div>
-
-            {/* Event Markers */}
-            <div className="event-marker e-pothole">
-              <AlertTriangle size={14} />
-            </div>
-            <div className="event-marker e-traffic">
-              <Activity size={14} />
-            </div>
           </div>
         </div>
       </section>
@@ -240,8 +234,43 @@ export default function LandingPage() {
         </div>
         <div className="map-preview-container">
           <div className="map-preview-visual">
-            <div className="fake-map">
+            <div className="story-container">
               <div className="demo-badge">DEMO DATA</div>
+              
+              <svg className="story-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+                {/* Background Roads */}
+                <path d="M -50,150 L 250,150 L 400,200 L 600,200 L 850,150" className="story-road" />
+                <path d="M 250,150 L 150,-50" className="story-road" />
+                <path d="M 400,200 L 300,450" className="story-road" />
+                <path d="M 600,200 L 750,-50" className="story-road" />
+                <path d="M 600,200 L 700,450" className="story-road" />
+
+                {/* Verification Connection */}
+                <path d="M 320,180 L 450,180" className="story-connect" />
+              </svg>
+
+              {/* Buses */}
+              <div className="story-bus sb1"><div className="sb-dot" /><span className="sb-label">Bus 01</span></div>
+              <div className="story-bus sb2"><div className="sb-dot" /><span className="sb-label">Bus 07</span></div>
+              <div className="story-bus sb3"><div className="sb-dot" /><span className="sb-label">Bus 12</span></div>
+              
+              {/* Observations */}
+              <div className="story-obs so1" />
+              <div className="story-obs so2" />
+              <div className="story-obs so3" />
+
+              {/* Verified Card */}
+              <div className="story-card">
+                <div className="sc-top"><span className="sc-dot"></span>VERIFIED EVENT</div>
+                <div className="sc-title">Pothole</div>
+                <div className="sc-sub">Deccan Gymkhana · R101<br/>Observed by 3 buses</div>
+                <div className="sc-badge">Verified</div>
+              </div>
+
+              {/* Texts */}
+              <div className="story-text st-observe">OBSERVE</div>
+              <div className="story-text st-verify">VERIFY</div>
+              <div className="story-text st-understand">UNDERSTAND</div>
             </div>
           </div>
           <div className="map-metrics">
@@ -265,11 +294,48 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* SEE WHAT THE CITY IS EXPERIENCING */}
+      <section className="city-experience" style={{padding:'80px 48px',background:'var(--l-bg)'}}>
+        <div className="section-header text-center" style={{marginBottom:'48px'}}>
+          <h2 style={{fontSize:'32px',marginBottom:'12px'}}>See what the city is experiencing.</h2>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))',gap:'24px',maxWidth:'1200px',margin:'0 auto'}}>
+          <div className="intel-card" style={{background:'var(--l-card)',border:'1px solid var(--l-border)',padding:'24px',borderRadius:'12px',boxShadow:'0 4px 12px rgba(0,0,0,0.02)'}}>
+            <div style={{color:'var(--l-primary)',marginBottom:'12px'}}><Activity size={24}/></div>
+            <h3 style={{fontSize:'14px',marginBottom:'8px'}}>ROAD HEALTH</h3>
+            <div style={{height:'60px',borderTop:'1px solid var(--l-border)',marginTop:'16px',paddingTop:'12px'}}>
+              <span className="demo-badge-small" style={{fontSize:'10px',background:'#E6F3F1',color:'var(--l-teal)',padding:'2px 6px',borderRadius:'4px'}}>89% Coverage</span>
+            </div>
+          </div>
+          <div className="intel-card" style={{background:'var(--l-card)',border:'1px solid var(--l-border)',padding:'24px',borderRadius:'12px',boxShadow:'0 4px 12px rgba(0,0,0,0.02)'}}>
+            <div style={{color:'var(--l-primary)',marginBottom:'12px'}}><Navigation2 size={24}/></div>
+            <h3 style={{fontSize:'14px',marginBottom:'8px'}}>TRAFFIC</h3>
+            <div style={{height:'60px',borderTop:'1px solid var(--l-border)',marginTop:'16px',paddingTop:'12px'}}>
+              <span className="demo-badge-small" style={{fontSize:'10px',background:'#FDF3E8',color:'var(--l-accent)',padding:'2px 6px',borderRadius:'4px'}}>7 Hotspots</span>
+            </div>
+          </div>
+          <div className="intel-card" style={{background:'var(--l-card)',border:'1px solid var(--l-border)',padding:'24px',borderRadius:'12px',boxShadow:'0 4px 12px rgba(0,0,0,0.02)'}}>
+            <div style={{color:'var(--l-primary)',marginBottom:'12px'}}><Map size={24}/></div>
+            <h3 style={{fontSize:'14px',marginBottom:'8px'}}>INFRASTRUCTURE</h3>
+            <div style={{height:'60px',borderTop:'1px solid var(--l-border)',marginTop:'16px',paddingTop:'12px'}}>
+              <span className="demo-badge-small" style={{fontSize:'10px',background:'#E6F3F1',color:'var(--l-teal)',padding:'2px 6px',borderRadius:'4px'}}>1,204 Verified</span>
+            </div>
+          </div>
+          <div className="intel-card" style={{background:'var(--l-card)',border:'1px solid var(--l-border)',padding:'24px',borderRadius:'12px',boxShadow:'0 4px 12px rgba(0,0,0,0.02)'}}>
+            <div style={{color:'var(--l-primary)',marginBottom:'12px'}}><AlertTriangle size={24}/></div>
+            <h3 style={{fontSize:'14px',marginBottom:'8px'}}>SAFETY</h3>
+            <div style={{height:'60px',borderTop:'1px solid var(--l-border)',marginTop:'16px',paddingTop:'12px'}}>
+              <span className="demo-badge-small" style={{fontSize:'10px',background:'#E9F0F4',color:'var(--l-primary)',padding:'2px 6px',borderRadius:'4px'}}>Active monitoring</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="final-cta">
         <div className="cta-content">
           <h2>Build a city that can see<br />what is changing on its roads.</h2>
-          <p>NagarNetra connects public transport, computer vision and civic response into one urban intelligence layer.</p>
+          <p>AVIRA connects public transport, computer vision and civic response into one urban intelligence layer.</p>
           <div className="hero-ctas">
             <button className="btn-large btn-primary" onClick={() => navigate('/citizen-login')}>Citizen Portal</button>
             <button className="btn-large btn-outline" onClick={() => navigate('/authority-login')}>Authority Portal</button>
@@ -281,8 +347,7 @@ export default function LandingPage() {
       <footer className="landing-footer">
         <div className="footer-content">
           <div className="footer-brand">
-            <Navigation2 size={24} />
-            <span className="brand-text">Nagar<b>Netra</b></span>
+            <AviraLogo />
             <p>AI-powered mobile urban intelligence</p>
             <span className="proto-badge">Prototype / Demonstration System</span>
           </div>
